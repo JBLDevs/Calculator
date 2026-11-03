@@ -30,7 +30,6 @@ let operator;
 let result;
 
 
-//for automatic insert comma in every 3 digits number
 function formatNumber(value) {
     const parts = value.split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -41,15 +40,13 @@ function formatNumber(value) {
 
 One.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
 });
 
 Two.addEventListener('click', function(e){
-    e.preventDefault();  
-    //Display.value += this.value;
+    e.preventDefault();
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -57,7 +54,6 @@ Two.addEventListener('click', function(e){
 
 Three.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -65,7 +61,6 @@ Three.addEventListener('click', function(e){
 
 Four.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -73,7 +68,6 @@ Four.addEventListener('click', function(e){
 
 Five.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -81,7 +75,6 @@ Five.addEventListener('click', function(e){
 
 Six.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -89,7 +82,6 @@ Six.addEventListener('click', function(e){
 
 Seven.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -97,7 +89,6 @@ Seven.addEventListener('click', function(e){
 
 Eight.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -105,7 +96,6 @@ Eight.addEventListener('click', function(e){
 
 Nine.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -113,7 +103,6 @@ Nine.addEventListener('click', function(e){
 
 Zero.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -121,7 +110,6 @@ Zero.addEventListener('click', function(e){
 
 Doublezero.addEventListener('click', function(e){
     e.preventDefault();  
-    //Display.value += this.value;
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue + this.value;
     Display.value = formatNumber(newValue);
@@ -144,10 +132,10 @@ Dot.addEventListener('click', function(e){
 clear.addEventListener('click', function(e){
     e.preventDefault();  
     
-    Display.value = Display.value.slice(0,0); //same with Display.value = '';
+    Display.value = Display.value.slice(0,0);
 
     const fnumber = document.querySelector('.fnumber');
-        if(fnumber){ // if the fnumber is exist, then execute the fnumber.remove();
+        if(fnumber){
             fnumber.remove();
         }
 
@@ -160,39 +148,12 @@ clear.addEventListener('click', function(e){
 
 //Delete button
 del.addEventListener('click', function(e){
-    e.preventDefault();
-
-    //Display.value = Display.value.slice(0,-1); 
+    e.preventDefault(); 
 
     const rawValue = Display.value.replace(/,/g, '');
     const newValue = rawValue.slice(0, -1);    
 
     Display.value = formatNumber(newValue);
-
-    /*if (newValue === '') {
-        Display.value = '';
-    } else {
-        Display.value = formatNumber(newValue);
-    }*/
-
-    /*    if(Display.value == ''){
-            //const fnumber = document.querySelector('.fnumber');
-            //fnumber.textContent = fnumber.textContent.trim().slice(0,-1);
-
-            const rawValue = Display.value.replace(/,/g, '');
-            const newValue = rawValue.slice(0, -1);
-
-            Display.value = newValue === ''
-            ? ''    //if
-            : formatNumber(newValue);   //else
-
-        }/*
-
-    /*
-    //Delete also the records after the calculations was made
-    firstNumber = undefined;
-    operator = undefined;
-    result = undefined;*/
 
 });
 
@@ -204,24 +165,23 @@ del.addEventListener('click', function(e){
 
 add.addEventListener('click', function(Add){
     Add.preventDefault(); 
-    //currentNumber = Number(Display.value); //get the value from display of whatever number/s select by the user
-    currentNumber = Number(Display.value.replace(/,/g, '')); //
-    const newOperator = Add.target.value; //get the string (+) value and convert to numeric operator
+    currentNumber = Number(Display.value.replace(/,/g, '')); 
     
-        const fnumber = document.querySelector('.fnumber'); //make a null element using DOM
-        if(!fnumber){ //for the first process of calculation 
-            firstNumber = currentNumber; //transfer to another variable to make calculate later on
+    const newOperator = Add.target.value; 
+    
+        const fnumber = document.querySelector('.fnumber');
+        if(!fnumber){ 
+            firstNumber = currentNumber; 
 
             operator = newOperator;
-            topdisplay.innerHTML = "<div class='fnumber'></div>"; //create another element to have display for the two variable
-            document.querySelector('.fnumber').textContent = `${formatNumber(String(firstNumber))} ${operator}`; //display for the two variable
-            }
+            topdisplay.innerHTML = "<div class='fnumber'></div>";
+            document.querySelector('.fnumber').textContent = `${formatNumber(String(firstNumber))} ${operator}`; 
             
-        else if(Display.value !== ''){ //to calculate the first and second number if ever to click the + instead of =
-            const secondNumber = currentNumber; //transfer the next number input to another variable
+        }else if(Display.value !== ''){ 
+            const secondNumber = currentNumber; 
                         
-                        if(operator==='+'){ //conditional comparison which makes true and led to process below 
-                            firstNumber = firstNumber + secondNumber; //add the two variables and use also the first number variable to display the result
+                        if(operator==='+'){ 
+                            firstNumber = firstNumber + secondNumber; 
                         }
                         else if(operator==='-'){
                             firstNumber = firstNumber - secondNumber;
@@ -232,18 +192,17 @@ add.addEventListener('click', function(Add){
                         if(operator==='/'){
                             firstNumber = firstNumber / secondNumber;
                         }
-            //firstNumber = formatNumber(String(firstNumber));
             operator = newOperator;
-            document.querySelector('.fnumber').textContent = `${formatNumber(String(firstNumber))} ${operator}`; //display the two variables
+            document.querySelector('.fnumber').textContent = `${formatNumber(String(firstNumber))} ${operator}`; 
         }
             
-        else{  //to change the operator into + if ever the current operator is "*" or "-"" or "/""
+        else{  
         operator = newOperator;
-        // still display the first number and the changed operator
+        
         document.querySelector('.fnumber').textContent = `${formatNumber(String(firstNumber))} ${operator}`;
         }
          
-    Display.value = ''; //after all the process will automatic empty the "display"
+    Display.value = ''; 
     
 });
 
@@ -253,7 +212,7 @@ sub.addEventListener('click', function(Sub){
     currentNumber = Number(Display.value.replace(/,/g, ''));
     const newOperator = Sub.target.value;
     
-        const fnumber = document.querySelector('.fnumber'); //make a null element using DOM
+        const fnumber = document.querySelector('.fnumber');
         if(!fnumber){
             firstNumber = currentNumber;
             operator = newOperator;
@@ -390,64 +349,3 @@ equal.addEventListener('click', function(e){
     }
     
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    equal.addEventListener('click', function(e){
-        e.preventDefault();
-        
-        // If there's no record, the process will not work
-        if(Display.value === '' || firstNumber === undefined || operator === undefined) return;
-
-        topdisplay.innerHTML = "<div class='fnumber'></div>";
-        const fnumber = document.querySelector('.fnumber');
-
-            const secondNumber = Number(Display.value)
-            if(operator === '+'){
-                result = firstNumber + secondNumber;
-            }else if(operator === '-'){
-                result = firstNumber - secondNumber;
-            }else if(operator === '*'){
-                result = firstNumber * secondNumber;
-            }else if(operator === '/'){
-                result = firstNumber / secondNumber;
-            }
-
-        //Display.value = result;
-        Display.value = formatNumber(String(result));
-
-        fnumber.remove();
-    });
-
-
-
-/*
-let firstnum = "12";
-let secondnum = 3;
-let thirdnum = Number(firstnum) + secondnum; 
-
-console.log(thirdnum);*/
